@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #[em Artemis], a website developed for job seekers to keep motivated and focused.
+
+
+  h1 Dynamic content
+
+  if error
+    p Error getting dynamic content.
+  else
+
+    p Artemis has the following record counts:
+
+    ul
+      li #[strong Jobs:] !{data.job_count}
+      //li #[strong JobInstances:] !{data.job_instance_count}
+      li #[strong Jobs available:] !{data.job_instance_available_count}
+      li #[strong Users:] !{data.user_count}
+      li #[strong Categories:] !{data.category_count}

@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  h1 Title: #{job.title}
+  
+  p #[strong User:] 
+    a(href=job.user.url) #{job.user.name}
+  p #[strong Company:] #{job.company}
+  p #[strong appliedDate:] #{job.appliedDate}
+  p #[strong Category:] 
+    each val, index in job.category
+      a(href=val.url) #{val.name}
+      if index < job.category.length - 1
+        |, 
+  
+  div(style='margin-left:20px;margin-top:20px')
+    h4 Copies
+    
+    each val in job_instances
+      hr
+      if val.status=='Applied'
+        p.text-success #{val.status}
+      else if val.status=='Network'
+        p.text-danger #{val.status}
+      else
+        p.text-warning #{val.status} 
+      p #[strong Category:] #{val.imprint}
+      if val.status!='Self Care'
+        p #[strong Follow Up:] #{val.follow_up}
+      p #[strong Id:] 
+        a(href=val.url) #{val._id}
+ 
+    else
+      p There are no copies of this job in the database.
+      
+  hr
+  p
+    a(href=job.url+'/delete') Delete Job
+  p
+    a(href=job.url+'/update') Update Job

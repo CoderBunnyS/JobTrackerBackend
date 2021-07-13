@@ -1,0 +1,34 @@
+//- extends layout
+
+//- block content
+//-   h1=title
+
+//-   form(method='POST' action='')
+//-     div.form-group
+//-       label(for='job') Job:
+//-       select#job.form-control(type='select', placeholder='Select job' name='job' required='true' )
+//-         - job_list.sort(function(a, b) {let textA = a.title.toUpperCase(); let textB = b.title.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+//-         for job in job_list
+//-           option(value=job._id, selected=(selected_job==job._id.toString() ? 'selected' : false) ) #{job.title}
+        
+//-     div.form-group
+//-       label(for='imprint') Imprint:
+//-       input#imprint.form-control(type='text', placeholder='More information' name='imprint' required='true' value=(undefined===jobinstance ? '' : jobinstance.imprint) )
+//-     div.form-group
+//-       label(for='follow_up') Date to follow up on job application:
+//-       input#follow_up.form-control(type='date', name='follow_up' value=(undefined===jobinstance ? '' : jobinstance.follow_up_yyyy_mm_dd))
+            
+//-     div.form-group
+//-       label(for='status') Status:
+//-       select#status.form-control(type='select', placeholder='Select status' name='status' required='true' )
+//-         option(value='Applied' selected=(undefined===jobinstance || jobinstance.status!='Applied' ? false:'selected')) Applied
+//-         option(value='Network' selected=(undefined===jobinstance || jobinstance.status!='Network' ? false:'selected')) Network
+//-         option(value='Learn' selected=(undefined===jobinstance || jobinstance.status!='Learn' ? false:'selected')) Learn
+//-         option(value='Self Care' selected=(undefined===jobinstance || jobinstance.status!='Self Care' ? false:'selected')) Self Care
+
+//-     button.btn.btn-primary(type='submit') Submit
+
+//-   if errors 
+//-     ul
+//-       for error in errors
+//-         li!= error.msg
