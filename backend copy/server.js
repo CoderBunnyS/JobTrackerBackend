@@ -1,4 +1,4 @@
-//init happened
+//init
 let express = require('express');
 let mongoose = require('mongoose');
 let cors = require('cors');
